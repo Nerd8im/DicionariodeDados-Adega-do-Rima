@@ -1,0 +1,1 @@
+# DicionariodeDados-Adega-do-Rima

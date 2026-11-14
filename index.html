@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dicionário de Dados - Adega do Rima</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <button id="btn-menu" class="btn btn-menu" type="button" aria-controls="sidebar" aria-expanded="false">Tabelas</button>
+    <div class="titulo">
+      <h1>Dicionário de Dados</h1>
+      <p>Sistema de Gestão Operacional e Vendas &middot; Adega do Rima</p>
+    </div>
+    <button id="btn-tema" class="btn" type="button" aria-pressed="false">Modo escuro</button>
+  </header>
+
+  <div class="layout">
+    <aside id="sidebar" class="sidebar" aria-label="Navegação por tabelas">
+      <h2>Tabelas</h2>
+      <ul id="nav-list"></ul>
+    </aside>
+
+    <main class="conteudo">
+      <section class="identificacao" aria-labelledby="t-ident">
+        <h2 id="t-ident">Identificação do projeto</h2>
+        <dl>
+          <dt>Escopo</dt>
+          <dd>Banco de dados relacional da Adega do Rima, varejo de bebidas com loja física única. Cobre cadastro de clientes, catálogo de produtos, pedidos e pagamentos, estoque por lote com controle de validade, cancelamento e estorno, auditoria e atendimento aos direitos do titular da LGPD. Não emite documento fiscal eletrônico nem integra marketplaces, gateways de pagamento ou ERP.</dd>
+          <dt>Tecnologia</dt>
+          <dd>MySQL 8.4 LTS, engine InnoDB, charset utf8mb4, collation utf8mb4_0900_ai_ci.</dd>
+          <dt>Responsáveis</dt>
+          <dd>
+            <ul class="responsaveis">
+              <li><strong>Gabriel Anjos Albuquerque</strong> (RGM 48037931): líder do grupo e Data Owner, responsável pelas regras de negócio e pela aprovação do dicionário.</li>
+              <li><strong>Rafael Christian de Araujo Costa</strong> (RGM 47926597): analista de requisitos e Data Steward, responsável pelos requisitos e pela qualidade das regras.</li>
+              <li><strong>Luan Henrique Ribeiro de Albuquerque</strong> (RGM 47914564): Data Steward, modelagem de dados.</li>
+              <li><strong>Thiago Nielsen dos Santos</strong> (RGM 47917041): Data Steward, modelagem de dados.</li>
+              <li><strong>Arthur Costa de Paula</strong> (RGM 48108014): Data Steward, modelagem de dados.</li>
+              <li><strong>Mateus Izac Batista</strong> (RGM 47917857): Data Steward, modelagem de dados.</li>
+              <li><strong>Ana Julia de Aquino Silva</strong> (RGM 47784105): Data Steward, modelagem de dados.</li>
+            </ul>
+            <p class="orientador">Professor orientador: Prof. Diego Marques de Carvalho. UNICID, Tatuapé, Análise e Desenvolvimento de Sistemas.</p>
+          </dd>
+        </dl>
+      </section>
+
+      <section class="painel" aria-label="Painel de controle">
+        <div class="acoes">
+          <a class="btn btn-primario" href="docs/Especificacao_Requisitos_Regras_Negocio_BD.pdf" download>Baixar Especificação de Requisitos (PDF)</a>
+          <button id="btn-der" class="btn" type="button">Abrir DER</button>
+        </div>
+        <div class="busca">
+          <label for="busca">Buscar tabela ou coluna</label>
+          <input id="busca" type="search" placeholder="Ex.: cliente, data_validade" autocomplete="off">
+          <p id="contagem" role="status" aria-live="polite"></p>
+        </div>
+        <ul class="legenda" aria-label="Legenda de privacidade">
+          <li><span class="badge badge-dps">[DPS]</span> Dado Pessoal Sensível (nenhum atributo deste modelo)</li>
+          <li><span class="badge badge-dp">[DP]</span> Dado Pessoal</li>
+          <li><span class="badge badge-na">[N/A]</span> Não Aplicável</li>
+        </ul>
+      </section>
+
+      <p id="vazio" hidden>Nenhuma tabela ou coluna corresponde à busca. Apague o texto para ver todas.</p>
+      <div id="dicionario"></div>
+    </main>
+  </div>
+
+  <div id="modal-der" class="modal" role="dialog" aria-modal="true" aria-label="Diagrama Entidade-Relacionamento" hidden>
+    <div class="modal-barra">
+      <button id="der-mais" class="btn" type="button" aria-label="Aumentar zoom">Zoom +</button>
+      <button id="der-menos" class="btn" type="button" aria-label="Diminuir zoom">Zoom -</button>
+      <button id="der-reset" class="btn" type="button">Reset</button>
+      <button id="der-fechar" class="btn btn-primario" type="button">Fechar</button>
+    </div>
+    <div id="der-cena" class="der-cena">
+      <img id="der-img" src="assets/der.png" alt="Diagrama Entidade-Relacionamento do banco da Adega do Rima" draggable="false">
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
